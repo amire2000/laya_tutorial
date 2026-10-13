@@ -71,6 +71,16 @@ Use Python 3.10 or newer. The maze module needs only the standard library.
 From the repository root:
 
 ```bash
+python3 LAB1/main.py
+```
+
+This loads the supplied maze and prints its grid with `R` marking the robot's
+current position and `G` marking the goal. When the robot reaches the goal,
+`R` takes precedence. These display markers do not change the `get_state()` grid.
+
+To explore the state and movement interactively:
+
+```bash
 cd LAB1
 python3
 ```
@@ -134,7 +144,7 @@ Model success is something to measure, not an assumption.
 From the repository root, run:
 
 ```bash
-python3 -m unittest discover -s LAB1 -v
+python3 -m unittest discover -s tests/LAB1 -v
 ```
 
 The tests verify movement, wall rejection, turning, invalid actions, snapshot

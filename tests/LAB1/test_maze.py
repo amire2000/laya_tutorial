@@ -2,7 +2,7 @@
 
 import unittest
 
-from maze import Maze
+from LAB1.maze import Maze
 
 
 class MazeTests(unittest.TestCase):

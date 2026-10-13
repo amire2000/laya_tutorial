@@ -54,6 +54,15 @@ task before relying on them. The supplied maze module works without Laya.
 | --- | --- |
 | [LAB1: Grid maze](LAB1/readme.md) | Use a fixed maze and full robot state to implement Laya action selection and a navigation loop. |
 
+Run LAB1 from the repository root using uv:
+
+```bash
+uv run LAB1/main.py
+```
+
+This prints the maze with `R` marking the robot and `G` marking the goal.
+The entry point does not require Laya.
+
 ## Read more
 
 - [Laya documentation](https://nandhakishorm.github.io/laya/): setup, prediction, and API reference.
