@@ -7,12 +7,12 @@ else:
 
 
 def render_maze(state: dict) -> str:
-    """Overlay the goal and robot on a copy of the grid; robot takes precedence."""
+    """Overlay cyan robot and green goal markers; robot takes precedence."""
     grid = list(state["grid"])
     for key, marker in (("goal", "G"), ("position", "R")):
         row, col = state[key]
         grid[row] = grid[row][:col] + marker + grid[row][col + 1:]
-    return "\n".join(grid)
+    return "\n".join(grid).replace("R", "\033[96mR\033[0m").replace("G", "\033[92mG\033[0m")
 
 
 def main() -> None:

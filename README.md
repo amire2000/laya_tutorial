@@ -13,13 +13,11 @@ the model to select an action. Your environment or controller executes it.
 
 ## Basic usage
 
-Use Python 3.10 or newer and [install uv](https://docs.astral.sh/uv/getting-started/installation/).
-From the repository root, create a virtual environment and install Laya
-using [uv's environment workflow](https://docs.astral.sh/uv/pip/environments/):
+Use Python 3.11 or newer and [install uv](https://docs.astral.sh/uv/getting-started/installation/).
+From the repository root, install the project's declared dependencies:
 
 ```bash
-uv venv
-uv pip install laya
+uv sync
 source .venv/bin/activate
 ```
 
@@ -62,6 +60,15 @@ uv run LAB1/main.py
 
 This prints the maze with `R` marking the robot and `G` marking the goal.
 The entry point does not require Laya.
+
+Run the Laya navigation reference solution:
+
+```bash
+uv run LAB1/student.py
+```
+
+See the [LAB1 walkthrough](LAB1/readme.md#run-the-laya-solution) for the state
+description, model request, movement diagrams, and how to evaluate results.
 
 ## Read more
 

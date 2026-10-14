@@ -22,11 +22,11 @@ class MainTests(unittest.TestCase):
         self.assertEqual(
             result.stdout,
             "#########\n"
-            "#R......#\n"
+            "#\033[96mR\033[0m......#\n"
             "#.#####.#\n"
             "#...#...#\n"
             "###.#.#.#\n"
-            "#.....#G#\n"
+            "#.....#\033[92mG\033[0m#\n"
             "#########\n",
         )
 
@@ -35,15 +35,23 @@ class MainTests(unittest.TestCase):
         maze.step("forward")
         state = maze.get_state()
         original_grid = list(state["grid"])
-        self.assertEqual(render_maze(state).splitlines()[1], "#.R.....#")
+        self.assertEqual(render_maze(state).splitlines()[1], "#.\033[96mR\033[0m.....#")
         self.assertEqual(state["grid"], original_grid)
 
     def test_robot_at_goal_takes_precedence(self):
         state = Maze().get_state()
         state["position"] = state["goal"]
         rendered = render_maze(state)
-        self.assertEqual(rendered.splitlines()[5], "#.....#R#")
+        self.assertEqual(rendered.splitlines()[5], "#.....#\033[96mR\033[0m#")
         self.assertNotIn("G", rendered)
+
+    def test_markers_on_same_row_keep_their_columns(self):
+        state = Maze().get_state()
+        state["position"] = (5, 5)
+        self.assertEqual(
+            render_maze(state).splitlines()[5],
+            "#....\033[96mR\033[0m#\033[92mG\033[0m#",
+        )
 
 
 if __name__ == "__main__":
